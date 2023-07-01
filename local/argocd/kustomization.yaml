@@ -1,0 +1,6 @@
+helmCharts:
+  - name: argo-cd
+    repo: ../../base/argocd/argo-cd-2.5.4
+    releaseName: argocd
+    namespace: argocd
+    valuesFile: values.yaml
