@@ -1,7 +1,7 @@
 # -- Deploy Argo CD Applications within this helm release
 # @default -- `[]` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
-applications: []
+applications: #[]
   - name: argocd-apps-clusters-test01
     namespace: argocd-init
     additionalLabels: {}
