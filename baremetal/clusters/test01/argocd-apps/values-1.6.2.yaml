@@ -2,45 +2,42 @@
 # @default -- `[]` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
 applications: []
-# - name: guestbook
-#   namespace: argocd
-#   additionalLabels: {}
-#   additionalAnnotations: {}
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-#   project: guestbook
-#   source:
-#     repoURL: https://github.com/argoproj/argocd-example-apps.git
-#     targetRevision: HEAD
-#     path: guestbook
-#     directory:
-#       recurse: true
-#   # ArgoCD v2.6 or later
-#   sources:
-#    - chart: elasticsearch
-#      repoURL: https://helm.elastic.co
-#      targetRevision: 8.5.1
-#    - repoURL: https://github.com/argoproj/argocd-example-apps.git
-#      path: guestbook
-#      targetRevision: HEAD
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: guestbook
-#   syncPolicy:
-#     automated:
-#       prune: false
-#       selfHeal: false
-#     syncOptions:
-#     - CreateNamespace=true
-#   revisionHistoryLimit: null
-#   ignoreDifferences:
-#   - group: apps
-#     kind: Deployment
-#     jsonPointers:
-#     - /spec/replicas
-#   info:
-#   - name: url
-#     value: https://argoproj.github.io/
+  - name: argocd-apps-clusters-test01
+    namespace: argocd-init
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: test01
+    source:
+      repoURL: https://github.com/YunchaeJung/k8scluster.git
+      targetRevision: master
+      path: baremetal/clusters/test01/argocd-apps-1.6.2
+      directory:
+        recurse: true
+    # ArgoCD v2.6 or later
+#    sources:
+#     - chart: argocd-apps
+#       repoURL: https://github.com/YunchaeJung/k8scluster.git
+#       targetRevision: 8.5.1
+#     - repoURL: https://github.com/YunchaeJung/k8scluster.git
+#       path: baremetal/clusters/test01/argocd-apps-1.6.2
+#       targetRevision: master
+    destination:
+      server: https://192.168.116.131:6443
+      namespace: argocd-init
+    syncPolicy:
+      automated:
+        prune: false
+        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
 
 # -- Deploy Argo CD Projects within this helm release
 # @default -- `[]` (See [values.yaml])
@@ -53,9 +50,9 @@ projects: #[]
    permitOnlyProjectScopedClusters: false
    finalizers:
    - resources-finalizer.argocd.argoproj.io
-   description: Example Project
+   description: test01 cluster
    sourceRepos:
-   - 'http://'
+   - 'https://github.com/YunchaeJung/k8scluster.git'
    destinations:
    - namespace: '*'
      server: https://192.168.116.131:6443
