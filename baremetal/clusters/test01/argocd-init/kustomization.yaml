@@ -1,0 +1,10 @@
+helmGlobals:
+  chartHome: ../../../../base/argocd/charts
+helmCharts:
+  - name: argocd-2.10.3
+    version: 2.10.3
+    namespace: argocd-init
+    valuesFile: values-2.10.3.yaml
+    includeCRDs: true
+resources:
+  - ./namespaces.yaml    
