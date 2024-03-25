@@ -58,7 +58,7 @@ projects: #[]
       server: https://192.168.116.131:6443
     clusterResourceWhitelist: #[]
       - group: '*'
-      - kind: '*'
+        kind: '*'
 
 # -- Deploy Argo CD ApplicationSets within this helm release
 # @default -- `[]` (See [values.yaml])
