@@ -43,22 +43,22 @@ applications: #[]
 # @default -- `[]` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
 projects: #[]
- - name: test01
-   namespace: argocd-init
-   additionalLabels: {}
-   additionalAnnotations: {}
-   permitOnlyProjectScopedClusters: false
-   finalizers:
-   - resources-finalizer.argocd.argoproj.io
-   description: test01 cluster
-   sourceRepos:
-   - 'https://github.com/YunchaeJung/k8scluster.git'
-   destinations:
-   - namespace: '*'
-     server: https://192.168.116.131:6443
-   clusterResourceWhitelist: #[]
-     - group: '*'
-     - kind: '*'
+  - name: test01
+    namespace: argocd-init
+    additionalLabels: {}
+    additionalAnnotations: {}
+    permitOnlyProjectScopedClusters: false
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    description: test01 cluster
+    sourceRepos:
+    - 'https://github.com/YunchaeJung/k8scluster.git'
+    destinations:
+    - namespace: '*'
+      server: https://192.168.116.131:6443
+    clusterResourceWhitelist: #[]
+      - group: '*'
+      - kind: '*'
 
 # -- Deploy Argo CD ApplicationSets within this helm release
 # @default -- `[]` (See [values.yaml])
