@@ -413,7 +413,7 @@ configs:
   ## - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#project-scoped-repositories-and-clusters
   clusterCredentials: #[]
     - name: test01
-      server: https://mycluster.example.com
+      server: https://192.168.116.131:6443 #https://mycluster.example.com
       labels: {}
       annotations: {}
       config:
