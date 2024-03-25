@@ -39,7 +39,7 @@ crds:
 global:
   # -- Default domain used by all components
   ## Used for ingresses, certificates, SSO, notifications, etc.
-  domain: argocd-init.com
+  domain: argocd-init.test01.com
 
   # -- Common labels for the all resources
   additionalLabels: {}
