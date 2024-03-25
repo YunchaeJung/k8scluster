@@ -12,7 +12,7 @@ applications: #[]
     source:
       repoURL: https://github.com/YunchaeJung/k8scluster.git
       targetRevision: master
-      path: baremetal/clusters/test01/argocd-apps-1.6.2
+      path: baremetal/clusters/test01/argocd-apps
       directory:
         recurse: true
     # ArgoCD v2.6 or later
