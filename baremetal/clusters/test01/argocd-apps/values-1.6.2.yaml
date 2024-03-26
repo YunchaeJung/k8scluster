@@ -10,7 +10,8 @@ applications: #[]
     - resources-finalizer.argocd.argoproj.io
     project: test01
     source:
-      repoURL: https://github.com/YunchaeJung/k8scluster.git
+      #repoURL: https://github.com/YunchaeJung/k8scluster.git
+      repoURL: https://github.com/YunchaeJung/k8scluster
       targetRevision: master
       path: baremetal/clusters/test01/argocd-apps
       directory:
