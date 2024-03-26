@@ -21,7 +21,7 @@ applications: #[]
     # ArgoCD v2.6 or later
     sources:
      - repoURL: https://github.com/YunchaeJung/k8scluster.git
-       path: baremetal/clusters/test01/argocd-apps-1.6.2
+       path: baremetal/clusters/test01/argocd-apps
        targetRevision: master
        #plugin:
        #  name: kustomize-build-with-helm
