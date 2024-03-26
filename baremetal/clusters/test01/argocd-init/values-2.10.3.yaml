@@ -381,7 +381,7 @@ configs:
           args: ["helm dependency build"]
         generate:
           command: [sh, -c]
-          args: ["helm template . > all.yaml && kustomize build"] 
+          args: ["kustomize build --enable-helm"] 
       # --- First plugin
       # my-plugin:
       #   init:
