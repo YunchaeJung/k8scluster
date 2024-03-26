@@ -179,7 +179,9 @@ configs:
 
     # -- Timeout to refresh application data as well as target manifests cache
     timeout.hard.reconciliation: 0s
-
+    
+    #kustomize 사용하기 위한 설정
+    kustomize.buildOptions: --enable-helm=true
     # Dex configuration
     # dex.config: |
     #   connectors:
@@ -379,7 +381,7 @@ configs:
           args: ["helm dependency build"]
         generate:
           command: [sh, -c]
-          args: ["helm template --release-name release-name . > all.yaml && kustomize build"] 
+          args: ["helm template . > all.yaml && kustomize build"] 
       # --- First plugin
       # my-plugin:
       #   init:

@@ -15,8 +15,8 @@ applications: #[]
       path: baremetal/clusters/test01/argocd-apps
       directory:
         recurse: true
-      plugin:
-        name: kustomize-build-with-helm
+      #plugin:
+      #  name: kustomize-build-with-helm
     # ArgoCD v2.6 or later
 #    sources:
 #     - chart: argocd-apps
