@@ -41,6 +41,45 @@ applications: #[]
       jsonPointers:
       - /spec/replicas
 
+  - name: argocd-apps-kube-prometheus-stack-test01
+    namespace: sre-mtr
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: test01
+    source:
+      #repoURL: https://github.com/YunchaeJung/k8scluster.git
+     # repoURL: https://github.com/YunchaeJung/k8scluster
+     # targetRevision: master
+     # path: baremetal/clusters/test01/argocd-apps
+     # directory:
+     #   recurse: true
+     # plugin:
+     #   name: kustomize-build-with-helm
+    # ArgoCD v2.6 or later
+    sources:
+     - repoURL: https://github.com/YunchaeJung/k8scluster.git
+       path: baremetal/clusters/test01/kube-prometheus-stack
+       targetRevision: master
+       #plugin:
+       #  name: kustomize-build-with-helm
+    destination:
+      server: https://192.168.116.131:6443
+      namespace: argocd-init
+    syncPolicy:
+      automated:
+        prune: false
+        selfHeal: false
+      syncOptions:
+      - CreateNamespace=true
+    revisionHistoryLimit: null
+    ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/replicas
+
 # -- Deploy Argo CD Projects within this helm release
 # @default -- `[]` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/

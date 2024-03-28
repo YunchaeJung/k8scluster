@@ -1,0 +1,10 @@
+helmGlobals:
+  chartHome: ../../../../base/kube-prometheus-stack/charts
+helmCharts:
+  - name: kube-prometheus-stack-0.72.0
+    version: 0.72.0
+    namespace: sre-mtr
+    valuesFile: values-0.72.0.yaml
+    includeCRDs: true
+resources:
+  - ./namespaces.yaml    
