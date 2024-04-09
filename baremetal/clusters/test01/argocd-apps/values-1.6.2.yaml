@@ -42,7 +42,7 @@ applications: #[]
       - /spec/replicas
 
   - name: argocd-apps-kube-prometheus-stack-test01
-    namespace: sre-mtr
+    namespace: argocd-init
     additionalLabels: {}
     additionalAnnotations: {}
     finalizers:
