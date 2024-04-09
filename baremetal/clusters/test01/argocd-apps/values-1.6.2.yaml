@@ -45,8 +45,8 @@ applications: #[]
     namespace: argocd-init
     additionalLabels: {}
     additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    finalizers: []
+    #- resources-finalizer.argocd.argoproj.io
     project: test01
     source:
       #repoURL: https://github.com/YunchaeJung/k8scluster.git
@@ -89,8 +89,8 @@ projects: #[]
     additionalLabels: {}
     additionalAnnotations: {}
     permitOnlyProjectScopedClusters: false
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    finalizers: []
+    #- resources-finalizer.argocd.argoproj.io
     description: test01 cluster
     sourceRepos:
     - 'https://github.com/YunchaeJung/k8scluster.git'
