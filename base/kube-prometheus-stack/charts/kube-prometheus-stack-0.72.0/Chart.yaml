@@ -46,12 +46,12 @@ dependencies:
     condition: crds.enabled
   - name: kube-state-metrics
     version: "5.18.*"
-    repository: ../kube-state-metrics
+    repository: ../../../kube-state-metrics
     #https://prometheus-community.github.io/helm-charts
     condition: kubeStateMetrics.enabled
   - name: prometheus-node-exporter
     version: "4.32.*"
-    repository: ../prometheus-node-exporter
+    repository: ../../../prometheus-node-exporter
     #https://prometheus-community.github.io/helm-charts
     condition: nodeExporter.enabled
 #  - name: grafana
