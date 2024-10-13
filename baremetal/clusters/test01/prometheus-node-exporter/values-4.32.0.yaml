@@ -11,8 +11,8 @@ image:
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
-nameOverride: "monitoring"
-fullnameOverride: "monitoring"
+nameOverride: "node-exporter"
+fullnameOverride: "node-exporter"
 
 # Number of old history to retain to allow rollback
 # Default Kubernetes value is set to 10
