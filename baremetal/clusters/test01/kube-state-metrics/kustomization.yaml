@@ -1,0 +1,10 @@
+helmGlobals:
+  chartHome: ../../../../base/kube-state-metrics/charts
+helmCharts:
+  - name: kube-state-metrics-5.26.0
+    version: 5.26.0
+    namespace: sre-mtr
+    valuesFile: values-5.26.0.yaml
+    includeCRDs: true
+resources:
+  - ./namespaces.yaml    

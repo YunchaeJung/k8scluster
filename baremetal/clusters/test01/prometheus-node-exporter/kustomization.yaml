@@ -1,0 +1,10 @@
+helmGlobals:
+  chartHome: ../../../../base/prometheus-node-exporter/charts
+helmCharts:
+  - name: prometheus-node-exporter-4.32.0
+    version: 4.32.0
+    namespace: sre-mtr
+    valuesFile: values-4.32.0.yaml
+    includeCRDs: true
+resources:
+  - ./namespaces.yaml    
