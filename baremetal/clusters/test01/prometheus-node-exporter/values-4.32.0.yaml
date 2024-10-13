@@ -273,8 +273,9 @@ networkPolicy:
   #   matchLabels:
   #     app.kubernetes.io/name: kube-state-metrics
 
+#modify true -> false
 securityContext:
-  enabled: true
+  enabled: false
   runAsGroup: 65534
   runAsUser: 65534
   fsGroup: 65534
