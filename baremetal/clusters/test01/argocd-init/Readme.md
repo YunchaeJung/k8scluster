@@ -22,13 +22,13 @@
 
 argocd 는 자체적으로 ssl 사설 인증서 처리를 하기 때문에 ingress 설정 시 해당 annotation 처리가 필요
 
-# values.yaml 파일의 특이 설정
+* values.yaml 파일의 특이 설정
 
-configs:
-  params:
-    server.insecure: true
-
-~~
+	configs:
+	  params:
+		server.insecure: true
+    
+	~~
 
     annotations: #{}
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
