@@ -24,13 +24,18 @@ argocd 는 자체적으로 ssl 사설 인증서 처리를 하기 때문에 ingre
 
 * values.yaml 파일의 특이 설정
 
+```
 	configs:
+	
 	  params:
+	  
 		server.insecure: true
     
 	~~
 
     annotations: #{}
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 	
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+	  
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+```	
