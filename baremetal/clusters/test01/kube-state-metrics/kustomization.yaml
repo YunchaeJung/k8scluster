@@ -5,6 +5,4 @@ helmCharts:
     version: 5.26.0
     namespace: sre-mtr
     valuesFile: values-5.26.0.yaml
-    includeCRDs: true
-resources:
-  - ./namespaces.yaml    
+    includeCRDs: true  
