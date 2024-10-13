@@ -73,7 +73,8 @@ applications: #[]
         selfHeal: false
       syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
+      - Replace=true
+      #- ServerSideApply=true
     revisionHistoryLimit: null
     ignoreDifferences:
     - group: apps
