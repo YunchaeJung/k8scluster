@@ -66,15 +66,18 @@ applications: #[]
        #  name: kustomize-build-with-helm
     destination:
       server: https://192.168.116.131:6443
-      namespace: argocd-init
+      namespace: sre-mtr #argocd-init
     syncPolicy:
       automated:
         prune: false
         selfHeal: false
+      hooks:
+        - type: PostSync
+          command: ["helm"]
+          args: ["dependency", "update"]
       syncOptions:
       - CreateNamespace=true
-      - Replace=true
-      #- ServerSideApply=true
+      - ServerSideApply=true
       #- Replace=true
     revisionHistoryLimit: null
     ignoreDifferences:
