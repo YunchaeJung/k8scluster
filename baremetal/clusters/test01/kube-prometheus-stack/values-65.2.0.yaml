@@ -3909,11 +3909,11 @@ prometheus:
         replacement: ${1}
       - source_labels: [__address__]
         separator: ;
-        action: hashmod
         regex: (.*)
         modules: 1
-        targetLabel: __tmp_hash
+        target_label: __tmp_hash
         replacement: ${1}
+        action: hashmod
       - source_labels: [__tmp_hash]
         separator: ; 
         regex: "0"
