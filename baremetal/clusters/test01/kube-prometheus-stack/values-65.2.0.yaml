@@ -1778,8 +1778,8 @@ kubeEtcd:
   serviceMonitor:
     enabled: true
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
-    ##
-    interval: ""
+    ##modify "" -> "15s
+    interval: "15s"
 
     ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
     ##
@@ -1830,8 +1830,14 @@ kubeEtcd:
 
     ## RelabelConfigs to apply to samples before scraping
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
-    relabelings: []
+    ## modify [] -> "~~"
+    relabelings: #[]
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      separator: ;
+      regex: ^(.*)$
+      targetLabel: node
+      replacement: $1
+      action: replace    
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
     #   regex: ^(.*)$
@@ -3858,7 +3864,56 @@ prometheus:
     ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
-    additionalScrapeConfigs: []
+    #modify [] -> "~~"
+    additionalScrapeConfigs: #[]
+    - job_name: kube-state-metrics
+      honor_timestamps: true
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      metrics-path: /metrics
+      scheme: http
+      follow_redirects: true
+      
+      kubernetes_sd_configs:
+        - role: endpoints
+          kubeconfig_file: ""
+          follow_redirects: true
+          namespaces:
+            names:
+            - sre-mtr
+            
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_instance,__meta_kubernetes_service_labelpresent_app_kubernetes_io_instance]
+        separator: ;
+        regex: (monitoring-state-metrics);true
+        action: keep
+        replacement: ${1}
+      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name,__meta_kubernetes_service_labelpresent_app_kubernetes_io_name]
+        separator: ;
+        regex: (monitoring-state-metrics);true
+        action: keep
+        replacement: ${1}
+      - source_labels: [__address__]
+        separator: ;
+        action: hashmod
+        regex: (.*)
+        modules: 1
+        targetLabel: __tmp_hash
+        replacement: ${1}
+      - source_labels: [__tmp_hash]
+        separator: ;
+        action: keep
+        regex: "0"
+        modules: 1
+        targetLabel: __tmp_hash
+        replacement: ${1}           
+    # scheme: https
+    # tls_config:
+    #   ca_file:   /etc/prometheus/secrets/etcd-client-cert/etcd-ca
+    #   cert_file: /etc/prometheus/secrets/etcd-client-cert/etcd-client
+    #   key_file:  /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
+  
+    
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node

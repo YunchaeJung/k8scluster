@@ -112,8 +112,11 @@ env: {}
 
 prometheus:
   monitor:
-    enabled: false
-    additionalLabels: {}
+  #modify false -> true
+    enabled: true
+    #modify 
+    additionalLabels: #{}
+      monitering: "true"
     namespace: ""
 
     jobLabel: ""
@@ -139,8 +142,16 @@ prometheus:
     ##
     attachMetadata:
       node: false
-
-    relabelings: []
+    
+    #modify  https://godekdls.github.io/Prometheus/configuration/ 참고
+    relabelings: #[]
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      separator: ;
+      regex: ^(.*)$
+      targetLabel: node
+      replacement: $1
+      action: replace
+      
     metricRelabelings: []
     interval: ""
     scrapeTimeout: 10s

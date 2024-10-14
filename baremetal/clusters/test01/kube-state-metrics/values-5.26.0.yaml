@@ -8,6 +8,10 @@ image:
   sha: ""
   pullPolicy: IfNotPresent
 
+
+#add, modify
+nameOverride: "monitoring"
+
 imagePullSecrets: []
 # - name: "image-pull-secret"
 
