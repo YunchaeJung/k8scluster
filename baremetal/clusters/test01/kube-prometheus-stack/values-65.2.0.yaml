@@ -3915,12 +3915,11 @@ prometheus:
         targetLabel: __tmp_hash
         replacement: ${1}
       - source_labels: [__tmp_hash]
-        separator: ;
-        action: keep
+        separator: ; 
         regex: "0"
-        modules: 1
-        targetLabel: __tmp_hash
-        replacement: ${1}           
+        replacement: ${1}  
+        action: keep
+                 
     # scheme: https
     # tls_config:
     #   ca_file:   /etc/prometheus/secrets/etcd-client-cert/etcd-ca
