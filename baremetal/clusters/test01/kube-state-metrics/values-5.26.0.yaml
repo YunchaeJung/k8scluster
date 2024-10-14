@@ -11,6 +11,7 @@ image:
 
 #add, modify
 nameOverride: "monitoring"
+fullnameOverride: "monitoring"
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
