@@ -81,7 +81,10 @@ Selector labels
 {{ toYaml .Values.selectorOverride }}
 {{- else }}
 app.kubernetes.io/name: {{ include "kube-state-metrics.name" . }}
+app.kubernetes.io/instance: {{ include "kube-state-metrics.name" . }}
+{{/*
 app.kubernetes.io/instance: {{ .Release.Name }}
+*/}}
 {{- end }}
 {{- end }}
 
