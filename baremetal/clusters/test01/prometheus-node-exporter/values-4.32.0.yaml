@@ -117,7 +117,9 @@ prometheus:
     #modify 
     additionalLabels: #{}
       monitering: "true"
-    namespace: ""
+    #modify 
+    #namespace: ""
+    namespace: "sre-mtr"
 
     jobLabel: ""
 
