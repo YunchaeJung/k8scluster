@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: sre-mtr
   labels:
-    monitoring: true
+    monitoring: "true"
