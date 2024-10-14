@@ -3653,8 +3653,8 @@ prometheus:
     ## If {}, select all ServiceMonitors
     ##
     #modify
-    serviceMonitorSelector: #{}
-      monitering: "true"
+    serviceMonitorSelector: {}
+      #monitering: "true"
     #     prometheus: somelabel
     ## Example which selects ServiceMonitors with label "prometheus" set to "somelabel"
     # serviceMonitorSelector:
