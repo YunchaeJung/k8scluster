@@ -80,8 +80,9 @@ customLabels: {}
   # app: kube-state-metrics
 
 ## Override selector labels
-selectorOverride: {}
-
+selectorOverride: #{}
+  app.kubernetes.io/name: "monitoring-kube-state-metrics"
+  app.kubernetes.io/instance: "monitoring-kube-state-metrics"
 ## set to true to add the release label so scraping of the servicemonitor with kube-prometheus-stack works out of the box
 releaseLabel: false
 
@@ -195,7 +196,8 @@ prometheus:
     ##
     labelValueLengthLimit: 0
     selectorOverride: {}
-
+      #app.kubernetes.io/name: "monitoring-kube-state-metrics"
+      #app.kubernetes.io/instance: "monitoring-kube-state-metrics"
     ## kube-state-metrics endpoint
     http:
       interval: ""
