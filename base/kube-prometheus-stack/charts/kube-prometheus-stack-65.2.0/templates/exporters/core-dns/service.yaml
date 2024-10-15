@@ -9,11 +9,11 @@ metadata:
 {{ include "kube-prometheus-stack.labels" . | indent 4 }}
   namespace: kube-system
 spec:
-  clusterIP: None
-  {{- if .Values.coreDns.service.ipDualStack.enabled }}
-  ipFamilies: {{ toYaml .Values.coreDns.service.ipDualStack.ipFamilies | nindent 4 }}
-  ipFamilyPolicy: {{ .Values.coreDns.service.ipDualStack.ipFamilyPolicy }}
-  {{- end }}
+#  clusterIP: None
+#  {{- if .Values.coreDns.service.ipDualStack.enabled }}
+#  ipFamilies: {{ toYaml .Values.coreDns.service.ipDualStack.ipFamilies | nindent 4 }}
+#  ipFamilyPolicy: {{ .Values.coreDns.service.ipDualStack.ipFamilyPolicy }}
+#  {{- end }}
   ports:
     - name: {{ .Values.coreDns.serviceMonitor.port }}
       port: {{ .Values.coreDns.service.port }}
