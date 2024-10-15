@@ -3,6 +3,7 @@ helmGlobals:
 helmCharts:
   - name: prometheus-node-exporter-4.32.0
     version: 4.32.0
+    releaseName: monitering
     namespace: sre-mtr
     valuesFile: values-4.32.0.yaml
     includeCRDs: true   

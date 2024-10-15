@@ -10,8 +10,8 @@ image:
 
 
 #add, modify
-nameOverride: "monitoring-kube-state-metrics"
-fullnameOverride: "monitoring-kube-state-metrics"
+#nameOverride: ""
+#fullnameOverride: ""
 
 imagePullSecrets: []
 # - name: "image-pull-secret"

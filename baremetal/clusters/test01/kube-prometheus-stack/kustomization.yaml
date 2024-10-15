@@ -3,6 +3,7 @@ helmGlobals:
 helmCharts:
   - name: kube-prometheus-stack-65.2.0
     version: 65.2.0
+    releaseName: monitoring    
     namespace: sre-mtr
     valuesFile: values-65.2.0.yaml
     includeCRDs: true

@@ -5,6 +5,7 @@
 ## Provide a name in place of kube-prometheus-stack for `app:` labels
 ##
 nameOverride: "monitoring"
+fullnameOverride: "monitoring"
 
 ## Override the deployment namespace
 ##
@@ -3896,29 +3897,29 @@ prometheus:
             names:
             - sre-mtr
             
-      relabel_configs:
-      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_instance,__meta_kubernetes_service_labelpresent_app_kubernetes_io_instance]
-        separator: ;
-        regex: (monitoring-kube-state-metrics);true
-        action: keep
-        replacement: ${1}
-      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name,__meta_kubernetes_service_labelpresent_app_kubernetes_io_name]
-        separator: ;
-        regex: (kube-state-metrics);true
-        action: keep
-        replacement: ${1}
-      - source_labels: [__address__]
-        separator: ;
-        regex: (.*)
-        modules: 1
-        target_label: __tmp_hash
-        replacement: ${1}
-        action: hashmod
-      - source_labels: [__tmp_hash]
-        separator: ; 
-        regex: "0"
-        replacement: ${1}  
-        action: keep
+#      relabel_configs:
+#      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_instance,__meta_kubernetes_service_labelpresent_app_kubernetes_io_instance]
+#        separator: ;
+#        regex: (monitoring-state-metrics);true
+#        action: keep
+#        replacement: ${1}
+#      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name,__meta_kubernetes_service_labelpresent_app_kubernetes_io_name]
+#        separator: ;
+#        regex: (kube-state-metrics);true
+#        action: keep
+#        replacement: ${1}
+#      - source_labels: [__address__]
+#        separator: ;
+#        regex: (.*)
+#        modules: 1
+#        target_label: __tmp_hash
+#        replacement: ${1}
+#        action: hashmod
+#      - source_labels: [__tmp_hash]
+#        separator: ; 
+#        regex: "0"
+#        replacement: ${1}  
+#        action: keep
                  
     # scheme: https
     # tls_config:

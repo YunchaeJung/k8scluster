@@ -11,8 +11,8 @@ image:
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
-nameOverride: "monitering-node-exporter"
-fullnameOverride: "monitering-node-exporter"
+nameOverride: ""
+fullnameOverride: "monitering-prometheus-node-exporter"
 
 # Number of old history to retain to allow rollback
 # Default Kubernetes value is set to 10
@@ -141,9 +141,9 @@ prometheus:
     selectorOverride: {}
 
     ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
-    ##
-    attachMetadata:
-      node: false
+    ##modify
+    #attachMetadata:
+    #  node: false
     
     #modify  https://godekdls.github.io/Prometheus/configuration/ 참고
     relabelings: #[]
